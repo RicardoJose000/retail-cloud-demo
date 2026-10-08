@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>{brand} Retail Platform - Concept Demo</title>
+<meta name="description" content="Concept demo of a cloud retail platform: catalog, multi-location inventory, WMS, omnichannel orders, loyalty and a reusable POS Connector Framework.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/site.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230b1220'/%3E%3Cpath d='M16 6l9 5v10l-9 5-9-5V11z' fill='none' stroke='%232dd4bf' stroke-width='2'/%3E%3Cpath d='M7 11l9 5 9-5M16 16v10' fill='none' stroke='%232dd4bf' stroke-width='2'/%3E%3C/svg%3E">
+<script src="assets/js/brand.js"></script>
+<script type="importmap">{ "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js" } }</script>
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <div class="wrap nav-in">
+    <a class="logo" href="index.html"><span class="logo-mark"><span></span></span><b data-brand>Retail Cloud</b><em>Retail Platform</em></a>
+    <nav class="nav-links">
+      <a href="#modes">Operating modes</a>
+      <a href="#modules">Modules</a>
+      <a href="#sync">POS sync</a>
+      <a href="#architecture">Architecture</a>
+      <a href="#channels">Channels</a>
+      <a href="#plan">Plan</a>
+    </nav>
+    <a class="btn btn-primary btn-sm" href="app.html">Open live demo <i data-lucide="arrow-up-right"></i></a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-media" id="heroMedia" aria-hidden="true"></div>
+  <div class="hero-shade"></div>
+  <div class="hero-grid"></div>
+  <div class="wrap hero-in">
+    <div class="hero-copy">
+      <div class="eyebrow"><span class="dot"></span><span class="only-personal">Prepared for <b data-brand>Retail Cloud</b> &nbsp;/&nbsp; </span>Concept demo with sample data</div>
+      <h1>One retail core for every store, warehouse and channel.</h1>
+      <p class="hero-sub">Catalog, multi-location inventory, WMS, omnichannel orders, loyalty and POS sync, all on one stock ledger. It runs on its own, or next to the POS your stores already use.</p>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="app.html">Open the live demo <i data-lucide="arrow-right"></i></a>
+        <a class="btn btn-ghost" href="app.html#/sync?play"><i data-lucide="play"></i> Run the SKU-A sync scenario</a>
+      </div>
+      <div class="hero-proof">
+        <div><b>2</b><span>operating modes</span></div>
+        <div><b>20</b><span>modules in the demo</span></div>
+        <div><b>1</b><span>source of stock truth</span></div>
+        <div><b>0</b><span>last-write-wins</span></div>
+      </div>
+    </div>
+    <div class="hero-3d">
+      <div class="net" id="heroNet"></div>
+      <div class="net-legend"><span><i class="c-sale"></i>Sales</span><span><i class="c-res"></i>Reservations</span><span><i class="c-trf"></i>Transfers</span></div>
+    </div>
+  </div>
+  <div class="wrap scenes" id="scenes"></div>
+</section>
+
+<!-- MODES -->
+<section class="sec" id="modes">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="kicker">Two operating models</div>
+      <h2>The cloud stays in charge. The POS is optional.</h2>
+      <p>Every merchant gets the same platform. Some stores run it alone, others connect a POS. Data rules stay the same either way.</p>
+    </div>
+    <div class="modes">
+      <article class="mode tilt reveal">
+        <div class="mode-top"><span class="pill">Mode A</span><i data-lucide="cloud"></i></div>
+        <h3>Standalone Mode</h3>
+        <p>A complete cloud retail operation with no POS required. Store sales, returns and counts are recorded straight into the platform.</p>
+        <div class="flow">
+          <div class="fnode">Store register</div><div class="fline"><span></span></div><div class="fnode hi">Cloud core</div><div class="fline"><span></span></div><div class="fnode">Web, apps, WMS</div>
+        </div>
+        <ul class="ticks"><li>Catalog, stock, orders, customers, reporting</li><li>Same ledger and audit as integrated stores</li><li>Switch to integrated later without migration</li></ul>
+      </article>
+      <article class="mode tilt reveal">
+        <div class="mode-top"><span class="pill pill-blue">Mode B</span><i data-lucide="plug-zap"></i></div>
+        <h3>POS-Integrated Mode</h3>
+        <p>The platform stays the central system. Connectors sync approved data and transactions with each POS by clear rules.</p>
+        <div class="flow">
+          <div class="fnode">Square / Clover / Lightspeed</div><div class="fline both"><span></span></div><div class="fnode hi">Connector Framework</div><div class="fline both"><span></span></div><div class="fnode">Cloud core</div>
+        </div>
+        <ul class="ticks"><li>Sales, returns, voids arrive as events, not totals</li><li>Offline queues replay safely on reconnect</li><li>Reconciliation instead of silent overwrites</li></ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- MODULES -->
+<section class="sec sec-alt" id="modules">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="kicker">Full scope, clickable</div>
+      <h2>Every requirement has a working screen.</h2>
+      <p>Each card opens the matching page in the live demo. Sample merchant: Harbor &amp; Pine, four locations in NY and NJ.</p>
+    </div>
+    <div class="mods" id="mods"></div>
+  </div>
+</section>
+
+<!-- SYNC -->
+<section class="sec" id="sync">
+  <div class="wrap sync-grid">
+    <div class="reveal">
+      <div class="kicker">POS Connector Framework</div>
+      <h2>Sync movements, not quantities.</h2>
+      <p class="lead">Your test case: the POS goes offline, sells 8, an online order reserves 10 and a manager adjusts -2. Replacing one number with another loses data. The ledger keeps every movement and shows the real position.</p>
+      <ul class="rules">
+        <li><b>Idempotency key per event</b><span>A resent sale is ignored, not counted twice.</span></li>
+        <li><b>Sequence check per register</b><span>Missing events are held until they arrive.</span></li>
+        <li><b>Oversell detection</b><span>Shortfall hits the newest reservation, staff choose the fix.</span></li>
+        <li><b>Reconciliation, never overwrite</b><span>Mismatches become variance records with an audit trail.</span></li>
+      </ul>
+      <a class="btn btn-primary" href="app.html#/sync?play"><i data-lucide="play"></i> Watch it play out</a>
+    </div>
+    <div class="ledger-card reveal" id="ledgerCard">
+      <div class="lc-head"><span><i data-lucide="scroll-text"></i> Stock ledger &nbsp;<em class="mono">SKU-A &middot; SoHo</em></span><span class="live"><i></i>replay</span></div>
+      <div class="lc-bal">
+        <div><span>On hand</span><b id="lcOn">40</b></div>
+        <div><span>Reserved</span><b id="lcRes">25</b></div>
+        <div><span>Available</span><b id="lcAv">15</b></div>
+      </div>
+      <div class="lc-rows" id="lcRows"></div>
+      <div class="lc-alert" id="lcAlert"><i data-lucide="triangle-alert"></i><div><b>Oversell detected: 5 units short</b><span>Online availability set to 0. Order W-10482 allocated 5 of 10.</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ARCHITECTURE -->
+<section class="sec sec-dark" id="architecture">
+  <div class="wrap arch-grid">
+    <div class="reveal">
+      <div class="kicker">Architecture</div>
+      <h2>Five layers, one source of truth.</h2>
+      <p class="lead">Every channel talks to the same tenant-aware API. The inventory ledger owns stock. Everything else reads from it or writes movements into it.</p>
+      <div class="stack-list" id="stackList">
+        <button data-l="0" class="on"><b>Channels</b><span>Storefront, iOS and Android apps, Merchant Portal, Super Admin, Driver App</span></button>
+        <button data-l="1"><b>API gateway</b><span>Auth, tenant context, roles, rate limits, versioned REST and webhooks</span></button>
+        <button data-l="2"><b>Core services</b><span>Catalog, inventory ledger, orders, WMS, purchasing, loyalty, payments, reporting</span></button>
+        <button data-l="3"><b>Event bus</b><span>Transactional outbox, queues, retries with backoff, dead-letter handling</span></button>
+        <button data-l="4"><b>Data and connectors</b><span>PostgreSQL with row-level security, Redis, S3, POS adapters</span></button>
+      </div>
+    </div>
+    <div class="stack3d reveal" id="stack3d">
+      <div class="plane p4"><span>Data + POS connectors</span><div class="chips"><i>PostgreSQL</i><i>Redis</i><i>S3</i><i>Square</i><i>Clover</i><i>Lightspeed</i></div></div>
+      <div class="plane p3"><span>Event bus</span><div class="chips"><i>Outbox</i><i>Queues</i><i>Retries</i><i>DLQ</i></div></div>
+      <div class="plane p2"><span>Core services</span><div class="chips"><i>Catalog</i><i class="hl">Ledger</i><i>Orders</i><i>WMS</i><i>Loyalty</i><i>Payments</i></div></div>
+      <div class="plane p1"><span>API gateway</span><div class="chips"><i>Auth</i><i>Tenants</i><i>Roles</i><i>Webhooks</i></div></div>
+      <div class="plane p0"><span>Channels</span><div class="chips"><i>Web</i><i>iOS</i><i>Android</i><i>Portal</i><i>Admin</i><i>Driver</i></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CHANNELS -->
+<section class="sec" id="channels">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="kicker">Omnichannel</div>
+      <h2>Branded storefront, customer apps and a Driver App.</h2>
+      <p>Buy online, pick up in store, ship, or deliver locally. Every option reads live availability from the same ledger.</p>
+    </div>
+    <div class="devices reveal">
+      <div class="browser tilt">
+        <div class="b-bar"><i></i><i></i><i></i><span>harborandpine.com</span></div>
+        <div class="b-body">
+          <div class="b-hero"><div><small>New season</small><b>Everyday essentials, made to last.</b><a>Shop the edit</a></div></div>
+          <div class="b-grid">
+            <div><span class="sw" style="--c:#111827"></span><b>Classic Crew Tee</b><em>$28</em><small class="ok">Pick up today, SoHo</small></div>
+            <div><span class="sw" style="--c:#7c2d12"></span><b>Merino Sweater</b><em>$98</em><small class="ok">In stock, 3 stores</small></div>
+            <div><span class="sw" style="--c:#1e3a8a"></span><b>Canvas Tote</b><em>$42</em><small class="warn">Low stock</small></div>
+          </div>
+        </div>
+      </div>
+      <div class="phone tilt">
+        <div class="ph-notch"></div>
+        <div class="ph-body">
+          <div class="ph-top"><small>Harbor &amp; Pine</small><i data-lucide="shopping-bag"></i></div>
+          <div class="ph-img" style="--c:#111827"><span>Classic Crew Tee</span></div>
+          <b class="ph-title">Classic Crew Tee</b><div class="ph-price">$28.00 &middot; <span>Black / M</span></div>
+          <div class="ph-opt on"><i data-lucide="store"></i><div><b>Pick up at SoHo</b><small>Ready in 2 hours &middot; 3 left</small></div></div>
+          <div class="ph-opt"><i data-lucide="truck"></i><div><b>Ship to home</b><small>2-4 business days</small></div></div>
+          <div class="ph-opt"><i data-lucide="bike"></i><div><b>Local delivery</b><small>Today, 4-6 PM</small></div></div>
+          <div class="ph-btn">Add to bag</div>
+          <div class="ph-pts">Earn 28 loyalty points</div>
+        </div>
+      </div>
+      <div class="phone tilt dark">
+        <div class="ph-notch"></div>
+        <div class="ph-body">
+          <div class="ph-top"><small>Driver &middot; Route 4</small><span class="ph-live">On route</span></div>
+          <svg class="ph-map" viewBox="0 0 200 140"><defs><pattern id="g" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M20 0H0V20" fill="none" stroke="#1e293b" stroke-width="1"/></pattern></defs><rect width="200" height="140" fill="#0b1220"/><rect width="200" height="140" fill="url(#g)"/><path d="M20 120 C 60 100, 50 60, 95 62 S 150 30, 182 20" fill="none" stroke="#2dd4bf" stroke-width="3" stroke-linecap="round" stroke-dasharray="6 5"/><circle cx="20" cy="120" r="6" fill="#2dd4bf"/><circle cx="95" cy="62" r="5" fill="#f59e0b"/><circle cx="140" cy="38" r="5" fill="#64748b"/><circle cx="182" cy="20" r="5" fill="#64748b"/></svg>
+          <div class="ph-stop now"><span>1</span><div><b>J. Alvarez</b><small>214 Grand St &middot; 2 items</small></div><em>4 min</em></div>
+          <div class="ph-stop"><span>2</span><div><b>M. Chen</b><small>88 Wythe Ave &middot; 1 item</small></div><em>18 min</em></div>
+          <div class="ph-stop"><span>3</span><div><b>K. Brooks</b><small>301 Kent Ave &middot; 3 items</small></div><em>31 min</em></div>
+          <div class="ph-btn">Confirm delivery &middot; photo + signature</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PLAN -->
+<section class="sec sec-alt" id="plan">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="kicker">Delivery plan</div>
+      <h2>Start with the core. Build the rest on top of it.</h2>
+      <p>Phase 1 builds what every other module depends on. Each phase ends with something you can test on staging.</p>
+    </div>
+    <div class="phases reveal">
+      <div class="phase on"><span class="ph-n">Phase 1</span><h4>Retail Core &amp; Connector Foundation</h4><p>Tenants, catalog, inventory ledger, transfers, POS Connector Framework, first connector, reconciliation, merchant admin.</p><div class="ph-m"><span>25 days</span><span class="only-personal">$5,900</span></div></div>
+      <div class="phase"><span class="ph-n">Phase 2</span><h4>Omnichannel Commerce</h4><p>Branded storefront, accounts, checkout, payments, order management, BOPIS, shipping, local delivery dispatch.</p><div class="ph-m"><span>6 weeks</span></div></div>
+      <div class="phase"><span class="ph-n">Phase 3</span><h4>Operations &amp; Growth</h4><p>WMS, purchasing, receiving, replenishment, returns, promotions, loyalty, reporting.</p><div class="ph-m"><span>7 weeks</span></div></div>
+      <div class="phase"><span class="ph-n">Phase 4</span><h4>Mobile, Delivery &amp; Launch</h4><p>iOS and Android apps, Driver App, Super Admin, globalization, hardening, load tests, launch.</p><div class="ph-m"><span>10 weeks, in parallel</span></div></div>
+    </div>
+    <div class="ms-strip only-personal reveal">
+      <div><b>M1</b><span>Foundation &amp; Catalog</span><em>Day 1-6</em></div>
+      <div><b>M2</b><span>Inventory Ledger</span><em>Day 7-13</em></div>
+      <div><b>M3</b><span>POS Connector &amp; Reconciliation</span><em>Day 14-20</em></div>
+      <div><b>M4</b><span>Merchant Admin, QA &amp; Handover</span><em>Day 21-25</em></div>
+    </div>
+    <div class="cta-band reveal">
+      <div><h3>See it working, not just described.</h3><p>Open the Merchant Portal demo and try transfers, purchase orders, the POS sync scenario and the globalization settings.</p></div>
+      <a class="btn btn-primary" href="app.html">Open the live demo <i data-lucide="arrow-right"></i></a>
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="wrap foot-in">
+    <span><b data-brand>Retail Cloud</b> Retail Platform &middot; concept demo, sample data only</span>
+    <span>Built by Ricardo Jose &middot; Stock video: Mixkit</span>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/lucide@0.460.0/dist/umd/lucide.min.js"></script>
+<script src="assets/js/site.js"></script>
+<script type="module">
+  import { mountNetwork } from './assets/js/net3d.js';
+  const el = document.getElementById('heroNet');
+  if (el) mountNetwork(el, { dark: true, camZ: 18.5, camY: 9 });
+</script>
+</body>
+</html>

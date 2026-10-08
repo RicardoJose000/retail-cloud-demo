@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>{brand} Merchant Portal - Live Demo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/app.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230b1220'/%3E%3Cpath d='M16 6l9 5v10l-9 5-9-5V11z' fill='none' stroke='%232dd4bf' stroke-width='2'/%3E%3Cpath d='M7 11l9 5 9-5M16 16v10' fill='none' stroke='%232dd4bf' stroke-width='2'/%3E%3C/svg%3E">
+<script src="assets/js/brand.js"></script>
+<script type="importmap">{ "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js" } }</script>
+</head>
+<body>
+<div class="shell">
+  <aside class="side" id="side">
+    <a class="s-logo" href="index.html"><span class="logo-mark"><span></span></span><div><b data-brand>Retail Cloud</b><small>Merchant Portal</small></div></a>
+    <div class="tenant">
+      <span class="t-av">HP</span>
+      <div><b>Harbor &amp; Pine</b><small>4 locations &middot; Growth plan</small></div>
+      <i data-lucide="chevrons-up-down"></i>
+    </div>
+    <nav id="navList"></nav>
+    <div class="s-foot"><span class="dot"></span><div><b>All systems normal</b><small>API p95 84 ms &middot; uptime 99.98%</small></div></div>
+  </aside>
+
+  <div class="main">
+    <header class="top">
+      <button class="icon-btn only-m" id="menuBtn" aria-label="Menu"><i data-lucide="menu"></i></button>
+      <div class="crumbs"><span id="crumbGroup">Overview</span><i data-lucide="chevron-right"></i><b id="crumbPage">Dashboard</b></div>
+      <div class="search"><i data-lucide="search"></i><input id="q" placeholder="Search SKU, barcode, order, customer"><kbd>/</kbd></div>
+      <div class="seg" id="modeSeg" title="Operating model">
+        <button data-mode="standalone">Standalone</button>
+        <button data-mode="pos" class="on">POS-Integrated</button>
+      </div>
+      <select class="sel" id="locSel" title="Location"></select>
+      <select class="sel sm" id="curSel" title="Currency"><option>USD</option><option>CAD</option><option>EUR</option><option>GBP</option><option>MXN</option></select>
+      <select class="sel sm" id="langSel" title="Language"><option value="en">EN</option><option value="es">ES</option><option value="fr">FR</option></select>
+      <button class="icon-btn" id="bellBtn" aria-label="Alerts"><i data-lucide="bell"></i><em id="bellN">2</em></button>
+      <div class="me"><span>AO</span><div><b>A. Okafor</b><small>Owner</small></div></div>
+    </header>
+    <main class="view" id="view"></main>
+  </div>
+</div>
+
+<div class="drawer-bg" id="drawerBg"></div>
+<aside class="drawer" id="drawer"></aside>
+<div class="modal-bg" id="modalBg"><div class="modal" id="modal"></div></div>
+<div class="toasts" id="toasts"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/lucide@0.460.0/dist/umd/lucide.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+<script type="module">
+  import { mountNetwork } from './assets/js/net3d.js';
+  window.RCNet = mountNetwork;
+  window.dispatchEvent(new Event('rcnet-ready'));
+</script>
+<script src="assets/js/data.js"></script>
+<script src="assets/js/app.js"></script>
+</body>
+</html>
